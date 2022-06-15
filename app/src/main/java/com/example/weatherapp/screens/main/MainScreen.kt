@@ -29,18 +29,25 @@ import com.example.weatherapp.R
 import com.example.weatherapp.data.DataOrException
 import com.example.weatherapp.model.GetWeatherNetworkResponse
 import com.example.weatherapp.model.WeatherItem
+import com.example.weatherapp.navigation.WeatherScreens
 import com.example.weatherapp.utils.formatDate
 import com.example.weatherapp.utils.formatDateTime
 import com.example.weatherapp.utils.formatDecimals
 import com.example.weatherapp.widgets.*
+import kotlin.math.log
 
 @Composable
-fun MainScreen(navController: NavController, viewModel: MainViewModel = hiltViewModel()){
+fun MainScreen(
+    navController: NavController,
+    viewModel: MainViewModel = hiltViewModel(),
+    city: String?
+){
 
+//    Log.d("TAG", "MainScreen: $city")
 
     val weatherData = produceState<DataOrException<GetWeatherNetworkResponse, Boolean, Exception>>(
         initialValue = DataOrException(loading = true)){
-        value = viewModel.getWeatherData(city = "Madrid")
+        value = viewModel.getWeatherData(city = city.toString())
     }.value
 
     if (weatherData.loading == true){
@@ -57,6 +64,9 @@ fun MainScaffold(weather: GetWeatherNetworkResponse, navController: NavControlle
     Scaffold(topBar = {
         WeatherAppBar(title = weather.city.name + ", ${weather.city.country}",
             navController = navController,
+            onAddActionClicked = {
+                    navController.navigate(WeatherScreens.SearchScreen.name)
+            },
             elevation = 5.dp){
             Log.d("Main", "MainScaffold: Button Clicked")
         }
@@ -122,6 +132,7 @@ fun MainContent(data: GetWeatherNetworkResponse){
                 }
             }
         }
+
     }
 
 
