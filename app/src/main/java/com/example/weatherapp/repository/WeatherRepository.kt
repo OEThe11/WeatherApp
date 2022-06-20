@@ -9,9 +9,9 @@ import javax.inject.Inject
 import kotlin.math.log
 
 class WeatherRepository @Inject constructor(private val api: WeatherApi) {
-    suspend fun getWeather(cityQuery: String): DataOrException<GetWeatherNetworkResponse, Boolean, Exception>{
+    suspend fun getWeather(cityQuery: String, units: String): DataOrException<GetWeatherNetworkResponse, Boolean, Exception>{
         val response = try {
-            api.getWeather(query = cityQuery)
+            api.getWeather(query = cityQuery, units = units)
 
         }catch (e: Exception){
             Log.d("REX", "getWeather: $e")

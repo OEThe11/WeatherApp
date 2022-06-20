@@ -23,22 +23,23 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideWeatherDao(weatherDatabase: WeatherDatabase): WeatherDao
-    = weatherDatabase.weatherDao()
+    fun provideWeatherDao(weatherDatabase: WeatherDatabase): WeatherDao =
+        weatherDatabase.weatherDao()
 
     @Provides
     @Singleton
-    fun provideWeatherDatabase(@ApplicationContext context: Context): WeatherDatabase
-    = Room.databaseBuilder(
-        context,
-        WeatherDatabase::class.java,
-        "weatherD")
-        .fallbackToDestructiveMigration()
-        .build()
+    fun provideWeatherDatabase(@ApplicationContext context: Context): WeatherDatabase =
+        Room.databaseBuilder(
+            context,
+            WeatherDatabase::class.java,
+            "weatherD"
+        )
+            .fallbackToDestructiveMigration()
+            .build()
 
     @Provides
     @Singleton
-    fun provideOpenWeatherApi(): WeatherApi{
+    fun provideOpenWeatherApi(): WeatherApi {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

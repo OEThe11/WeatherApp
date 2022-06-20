@@ -95,29 +95,34 @@ fun WeatherAppBar(
                         onButtonClicked.invoke()
                     })
             }
-            if(isMainScreen){
-                val isAlreadyFavList = viewModel.favList.collectAsState().value.filter { item->
+            if (isMainScreen) {
+                val isAlreadyFavList = viewModel.favList.collectAsState().value.filter { item ->
                     (item.city == title.split(",")[0])
                 }
-                if (isAlreadyFavList.isNullOrEmpty()){
-                    Icon(imageVector = Icons.Default.Favorite,
+                if (isAlreadyFavList.isNullOrEmpty()) {
+                    Icon(
+                        imageVector = Icons.Default.Favorite,
                         contentDescription = "Favorite Icon",
                         modifier = Modifier
                             .scale(0.9f)
                             .clickable {
                                 val dataList = title.split(",")
-                                viewModel.insertFavorite(
-                                    Favorite(
-                                        city = dataList[0], //city name
-                                        country = dataList[1] //country code
-                                    )).run {
+                                viewModel
+                                    .insertFavorite(
+                                        Favorite(
+                                            city = dataList[0], //city name
+                                            country = dataList[1] //country code
+                                        )
+                                    )
+                                    .run {
                                         showIt.value = true
-                                }
+                                    }
                             },
-                        tint = Color.Red.copy(alpha = 0.6f))
+                        tint = Color.Red.copy(alpha = 0.6f)
+                    )
                 } else {
                     showIt.value = false
-                    Box{}
+                    Box {}
                 }
 
                 ShowToast(context = context, showIt)

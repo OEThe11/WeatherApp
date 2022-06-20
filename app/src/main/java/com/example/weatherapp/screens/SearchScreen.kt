@@ -31,25 +31,30 @@ import com.example.weatherapp.widgets.WeatherAppBar
 
 
 @Composable
-fun SearchScreen(navController: NavController){
+fun SearchScreen(navController: NavController) {
     Scaffold(topBar = {
-        WeatherAppBar(title = "Search",
-                    navController = navController,
-                    icon = Icons.Default.ArrowBack,
-                    isMainScreen = false){
+        WeatherAppBar(
+            title = "Search",
+            navController = navController,
+            icon = Icons.Default.ArrowBack,
+            isMainScreen = false
+        ) {
             navController.popBackStack()
         }
     }) {
         Surface() {
-            Column (verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    SearchBar(modifier = Modifier
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                SearchBar(
+                    modifier = Modifier
                         .fillMaxWidth()
                         .padding(6.dp)
-                        .align(Alignment.CenterHorizontally)){mCity ->
-                        navController.navigate(WeatherScreens.MainScreen.name + "/$mCity")
-                    }
+                        .align(Alignment.CenterHorizontally)
+                ) { mCity ->
+                    navController.navigate(WeatherScreens.MainScreen.name + "/$mCity")
+                }
             }
         }
     }
@@ -63,7 +68,7 @@ fun SearchBar(
 ) {
     val searchQueryState = rememberSaveable { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
-    val valid = remember (searchQueryState.value){
+    val valid = remember(searchQueryState.value) {
         searchQueryState.value.trim().isNotEmpty()
 
     }
@@ -83,23 +88,25 @@ fun SearchBar(
 }
 
 @Composable
-fun CommonTextField(valueState: MutableState<String>,
-                    placeholder: String,
-                    keyboardType: KeyboardType = KeyboardType.Text,
-                    imeAction: ImeAction = ImeAction.Next,
-                    onAction: KeyboardActions = KeyboardActions.Default
+fun CommonTextField(
+    valueState: MutableState<String>,
+    placeholder: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Next,
+    onAction: KeyboardActions = KeyboardActions.Default
 ) {
     OutlinedTextField(
         value = valueState.value,
-        onValueChange = { valueState.value = it},
-        label = { Text(text = placeholder)},
+        onValueChange = { valueState.value = it },
+        label = { Text(text = placeholder) },
         maxLines = 1,
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType, imeAction = imeAction),
         keyboardActions = onAction,
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Color.Blue,
-            cursorColor = Color.Black),
+            cursorColor = Color.Black
+        ),
         shape = RoundedCornerShape(15.dp),
         modifier = Modifier
             .fillMaxWidth()

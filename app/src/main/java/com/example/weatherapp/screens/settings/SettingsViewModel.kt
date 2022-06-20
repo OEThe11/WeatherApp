@@ -45,6 +45,6 @@ class SettingsViewModel @Inject constructor(
     fun insertUnit(unit: Unit) = viewModelScope.launch { repository.insertUnit(unit) }
     fun updateUnit(unit: Unit) = viewModelScope.launch { repository.updateUnit(unit) }
     fun deleteUnit(unit: Unit) = viewModelScope.launch { repository.deleteUnit(unit) }
-    fun deleteAllUnits(unit: Unit) = viewModelScope.launch { repository.deleteAllUnits() }
+    fun deleteAllUnits() = viewModelScope.launch { repository.deleteAllUnits() }
 
 }
