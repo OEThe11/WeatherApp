@@ -6,14 +6,4 @@ observations as well as delete the cities that you saved. And you can also chang
 standard methods and technologies.
 
 
-<img align ="left" src ="WAPICS/Screenshot%202022-08-06%20134901.jpg">    <img align ="right" src ="WAPICS/Screenshot%202022-08-06%20134927.jpg">
-
-
-
-
-
-
-
-
-
-<img align = "left" src = "WAPICS/Screenshot%202022-08-06%20135839.jpg">   <img align = "right" src = "WAPICS/Screenshot%202022-08-06%20140139.jpg">
+<img align ="left" src ="WAPICS/Screenshot%202022-08-06%20134901.jpg">  <img align = "right" src = "WAPICS/Screenshot%202022-08-06%20135839.jpg">   
