@@ -6,3 +6,4 @@ observations as well as delete the cities that you saved. And you can also chang
 standard methods and technologies.
 
 
+<img align = "left" src = "Screenshot%202022-08-06%20134901.jpg">
