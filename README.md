@@ -7,3 +7,6 @@ standard methods and technologies.
 
 
 <img align ="left" src ="WAPICS/Screenshot%202022-08-06%20134901.jpg">    <img align ="right" src ="WAPICS/Screenshot%202022-08-06%20134927.jpg">
+
+
+<img align = "left" src = "WAPICS/Screenshot%202022-08-06%20135839.jpg"
