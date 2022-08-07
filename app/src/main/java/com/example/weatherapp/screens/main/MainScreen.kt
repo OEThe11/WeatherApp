@@ -43,9 +43,10 @@ fun MainScreen(
         mutableStateOf(false)
     }
 
-    if (!unitFromDb.isNullOrEmpty()) {
-        unit = unitFromDb[0].unit.split(" ")[0].lowercase()
-        isImperial = unit == "imperial"
+//    if (!unitFromDb.isNullOrEmpty()) {
+//        unit = unitFromDb[0].unit.split(" ")[0].lowercase()
+//        isImperial = unit == "imperial"
+        isImperial = false
 
         val weatherData =
             produceState<DataOrException<GetWeatherNetworkResponse, Boolean, Exception>>(
@@ -63,7 +64,7 @@ fun MainScreen(
         } else if (weatherData.data != null) {
             MainScaffold(weather = weatherData.data!!, navController, isImperial = isImperial)
         }
-    }
+//    }
 
 }
 
